@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Header } from './components/Header';
 
 import './global.css';
@@ -7,7 +8,7 @@ import { TaskList } from './components/TaskList';
 import { PlusCircle } from '@phosphor-icons/react';
 
 export interface TaskType {
-  id: number;
+  id: string;
   title: string;
   isComplete: boolean;
 }
@@ -19,7 +20,7 @@ function App() {
   function handleCreateTask(event: React.FormEvent) {
     event.preventDefault();
     const newTask = {
-      id: Math.random(),
+      id: uuidv4(),
       title: newTaskTitle,
       isComplete: false,
     };
@@ -32,6 +33,18 @@ function App() {
     event: React.ChangeEvent<HTMLInputElement>
   ) {
     setNewTaskTitle(event.target.value);
+  }
+
+  function handleDeleteTask(taskId: string) {
+    setTasks(tasks.filter((task) => task.id !== taskId));
+  }
+
+  function handleCheckTask(taskId: string) {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, isComplete: !task.isComplete } : task
+    );
+
+    setTasks(updatedTasks);
   }
 
   return (
@@ -52,7 +65,11 @@ function App() {
           </button>
         </form>
         <main>
-          <TaskList tasks={tasks} />
+          <TaskList
+            tasks={tasks}
+            onDeleteTask={handleDeleteTask}
+            onCheckTask={handleCheckTask}
+          />
         </main>
       </div>
     </>
