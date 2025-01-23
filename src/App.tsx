@@ -1,40 +1,62 @@
+import { useState } from 'react';
 import { Header } from './components/Header';
-import { TaskInput } from './components/TaskInput';
 
 import './global.css';
 import styles from './App.module.css';
 import { TaskList } from './components/TaskList';
+import { PlusCircle } from '@phosphor-icons/react';
 
 export interface TaskType {
-  id: number,
-  title: string,
-  isComplete: boolean
+  id: number;
+  title: string;
+  isComplete: boolean;
 }
 
-const tasks: TaskType[] = [{
-  id: 1,
-  title: 'Terminar desafio',
-  isComplete: false
-},{
-  id: 2,
-  title: 'Assistir aulasAssistir aulasAssistir aulasAssistir aulas',
-  isComplete: true
-}];
-
-const tasks2: TaskType[] = []
-
 function App() {
+  const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [newTaskTitle, setNewTaskTitle] = useState('');
+
+  function handleCreateTask(event: React.FormEvent) {
+    event.preventDefault();
+    const newTask = {
+      id: Math.random(),
+      title: newTaskTitle,
+      isComplete: false,
+    };
+
+    setTasks([...tasks, newTask]);
+    setNewTaskTitle('');
+  }
+
+  function handleOnChangeNewTaskTitle(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    setNewTaskTitle(event.target.value);
+  }
+
   return (
     <>
       <Header />
       <div className={styles.wrapper}>
-        <TaskInput />
+        <form className={styles.input} onSubmit={handleCreateTask}>
+          <input
+            type="text"
+            placeholder="Adicione uma nova tarefa"
+            onChange={handleOnChangeNewTaskTitle}
+            value={newTaskTitle}
+            required
+          />
+          <button>
+            Criar
+            <PlusCircle size={20} />
+          </button>
+        </form>
         <main>
-          <TaskList tasks={tasks}/>
+          <TaskList tasks={tasks} />
         </main>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,5 +1,5 @@
-import styles from './EmptyList.module.css'
-import clipboard from '../assets/clipboard.svg'
+import styles from './EmptyList.module.css';
+import clipboard from '../assets/clipboard.svg';
 
 export function EmptyList() {
   return (
@@ -8,5 +8,5 @@ export function EmptyList() {
       <p>Você ainda não tem tarefas cadastradas</p>
       <span>Crie tarefas e organize seus itens a fazer</span>
     </div>
-  )
+  );
 }

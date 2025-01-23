@@ -6,5 +6,5 @@ export function Header() {
     <header className={styles.header}>
       <img src={toDo} alt="ToDo logo" />
     </header>
-  )
+  );
 }
