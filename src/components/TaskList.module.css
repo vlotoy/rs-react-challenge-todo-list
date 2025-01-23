@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.header > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header > div > p {
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.header > div:nth-child(2) > p {
+  color: var(--purple);
+}
+
+.header > div span {
+  color: var(--gray-100);
+  font-size: 12px;
+  font-weight: bold;
+  background: var(--gray-400);
+  padding: 0.125rem 0.5rem;
+  border-radius: 8px;
+}

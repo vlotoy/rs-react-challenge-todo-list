@@ -10,10 +10,10 @@
   border-radius: 8px;
   background: var(--gray-500);
   color: var(--gray-100);
-}
 
-.wrapper input:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .wrapper button {
@@ -27,5 +27,10 @@
   background: var(--blue-dark);
   color: var(--gray-100);
   font-weight: 600;
+
+  &:hover {
+    background: var(--blue);
+    cursor: pointer;
+  }
 }
 

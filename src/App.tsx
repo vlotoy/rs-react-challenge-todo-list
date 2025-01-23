@@ -1,8 +1,27 @@
 import { Header } from './components/Header';
+import { TaskInput } from './components/TaskInput';
 
 import './global.css';
 import styles from './App.module.css';
-import { TaskInput } from './components/TaskInput';
+import { TaskList } from './components/TaskList';
+
+export interface TaskType {
+  id: number,
+  title: string,
+  isComplete: boolean
+}
+
+const tasks: TaskType[] = [{
+  id: 1,
+  title: 'Terminar desafio',
+  isComplete: false
+},{
+  id: 2,
+  title: 'Assistir aulasAssistir aulasAssistir aulasAssistir aulas',
+  isComplete: true
+}];
+
+const tasks2: TaskType[] = []
 
 function App() {
   return (
@@ -11,7 +30,7 @@ function App() {
       <div className={styles.wrapper}>
         <TaskInput />
         <main>
-          <div>Task List</div>
+          <TaskList tasks={tasks}/>
         </main>
       </div>
     </>

@@ -1,0 +1,15 @@
+.wrapper {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--gray-400);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper p {
+  margin-top: 1rem;
+  line-height: 1.4;
+  color: var(--gray-300);
+  font-weight: 700;
+}

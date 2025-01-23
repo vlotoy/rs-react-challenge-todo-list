@@ -11,4 +11,8 @@
   html {
       font-size: 87.5%;
   }
+
+  .fields > p {
+      max-width: 2000px;
+  }
 }

@@ -1,0 +1,100 @@
+.wrapper {
+  margin-bottom: 0.75rem;
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.wrapper > button {
+  background: var(--gray-500);
+  color: var(--gray-300);
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0.375rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--danger);
+    background: var(--gray-400);
+  }
+}
+
+.fields {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fields input[type="checkbox"] {
+  appearance: none;
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+  background: var(--gray-500);
+  border: 0.15rem solid var(--blue);
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    clip-path: polygon(39.44% 65.68%, 83.29% 18.14%, 91% 25.25%, 41.2% 79.25%, 16.84% 58.75%, 22.79% 51.68%);
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: 0.2s transform ease-in-out;
+    box-shadow: inset 1rem 1rem #fff;
+  }
+  
+  &:hover:not(:checked) {
+    background: var(--blue-dark);
+  }
+
+  &:hover:checked {
+    background: var(--purple);
+  }
+
+
+  &:checked {
+    background: var(--purple-dark);
+    border-color: var(--purple-dark);
+
+    &::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    & + p {
+      text-decoration: line-through;
+      color: var(--gray-300);
+    }
+  }
+
+  &:focus:not(::checked) {
+    border-color: var(--blue);
+  }
+
+  &:focus::checked {
+    border-color: var(--purple);
+  }
+
+  &:not(:checked) + p {
+    color: var(--gray-100);
+  }
+}
+
+@media (max-width: 470px) {
+  .fields > p {
+      max-width: 200px;
+  }
+}
